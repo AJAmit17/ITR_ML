@@ -21,7 +21,7 @@ itr_ml/
 │
 ├── image_text_recognition/
 │   ├── __init__.py
-│   ├── generate.py              # Generates results based on OCR model
+│   ├── generate.py              # Generates Testing and Training images
 │   ├── evaluate.py              # Evaluates model accuracy using test dataset
 │   └── image_text_recognizer.py # Handles text recognition and image preprocessing
 │
