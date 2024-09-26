@@ -1,0 +1,231 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "ImageTextRecognizer",
+        "importPath": "image_text_recognition",
+        "description": "image_text_recognition",
+        "isExtraImport": true,
+        "detail": "image_text_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "accuracy_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "precision_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "recall_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "f1_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "SequenceMatcher",
+        "importPath": "difflib",
+        "description": "difflib",
+        "isExtraImport": true,
+        "detail": "difflib",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ImageDraw",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ImageFont",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ImageEnhance",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ImageFilter",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "easyocr",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "easyocr",
+        "description": "easyocr",
+        "detail": "easyocr",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "setup",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "find_packages",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_edit_distance",
+        "kind": 2,
+        "importPath": "image_text_recognition.evaluate",
+        "description": "image_text_recognition.evaluate",
+        "peekOfCode": "def calculate_edit_distance(predicted, actual):\n    # Levenshtein distance or ratio can be calculated using SequenceMatcher\n    return SequenceMatcher(None, predicted, actual).ratio()\ndef evaluate_model(test_dir, ground_truth):\n    recognizer = ImageTextRecognizer()\n    predictions = []\n    true_labels = []\n    edit_distances = []\n    for image_file, true_text in ground_truth.items():\n        image_path = os.path.join(test_dir, image_file)",
+        "detail": "image_text_recognition.evaluate",
+        "documentation": {}
+    },
+    {
+        "label": "evaluate_model",
+        "kind": 2,
+        "importPath": "image_text_recognition.evaluate",
+        "description": "image_text_recognition.evaluate",
+        "peekOfCode": "def evaluate_model(test_dir, ground_truth):\n    recognizer = ImageTextRecognizer()\n    predictions = []\n    true_labels = []\n    edit_distances = []\n    for image_file, true_text in ground_truth.items():\n        image_path = os.path.join(test_dir, image_file)\n        result = recognizer.recognize_text(image_path)\n        predicted_text = ' '.join([text for _, text, _ in result])\n        predictions.append(predicted_text)",
+        "detail": "image_text_recognition.evaluate",
+        "documentation": {}
+    },
+    {
+        "label": "create_image_with_text",
+        "kind": 2,
+        "importPath": "image_text_recognition.generate",
+        "description": "image_text_recognition.generate",
+        "peekOfCode": "def create_image_with_text(text, filename, directory, font_size=20, image_size=(200, 50)):\n    img = Image.new('RGB', image_size, color='white')\n    d = ImageDraw.Draw(img)\n    try:\n        font = ImageFont.truetype(\"arial.ttf\", font_size)\n    except IOError:\n        font = ImageFont.load_default()\n    # Get text bounding box\n    bbox = font.getbbox(text)\n    text_width = bbox[2] - bbox[0]",
+        "detail": "image_text_recognition.generate",
+        "documentation": {}
+    },
+    {
+        "label": "generate_sample_images",
+        "kind": 2,
+        "importPath": "image_text_recognition.generate",
+        "description": "image_text_recognition.generate",
+        "peekOfCode": "def generate_sample_images():\n    sample_texts = [\n        \"Hello World\", \"OpenAI GPT\", \"Machine Learning\", \"Python Code\", \"Deep Learning\",\n        \"Artificial Intelligence\", \"Neural Networks\", \"Data Science\", \"Computer Vision\",\n        \"Natural Language Processing\", \"Reinforcement Learning\", \"Big Data Analytics\",\n        \"Internet of Things\", \"Cloud Computing\", \"Blockchain Technology\", \"Cybersecurity\",\n        \"Quantum Computing\", \"Augmented Reality\", \"Virtual Reality\", \"Robotics\"\n    ]\n    # Generate training images\n    train_dir = \"train_images\"",
+        "detail": "image_text_recognition.generate",
+        "documentation": {}
+    },
+    {
+        "label": "ImageTextRecognizer",
+        "kind": 6,
+        "importPath": "image_text_recognition.image_text_recognition",
+        "description": "image_text_recognition.image_text_recognition",
+        "peekOfCode": "class ImageTextRecognizer:\n    def __init__(self, lang='en'):\n        self.reader = easyocr.Reader([lang], gpu=False)\n        logging.info(f\"Initialized EasyOCR with language: {lang}\")\n    def preprocess_image(self, image_path, resize=None, enhance_contrast=1.5, sharpen=True):\n        logging.info(f\"Preprocessing image: {image_path}\")\n        try:\n            with Image.open(image_path) as img:\n                if img.mode != 'RGB':\n                    img = img.convert('RGB')",
+        "detail": "image_text_recognition.image_text_recognition",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "image_text_recognition.image_text_recognition",
+        "description": "image_text_recognition.image_text_recognition",
+        "peekOfCode": "def main():\n    recognizer = ImageTextRecognizer()\n    image_path = \"test/1.jpg\"\n    text_results = recognizer.recognize_text(image_path)\n    if text_results:\n        image = cv2.imread(image_path)\n        visualized_image = recognizer.visualize_detection(image, text_results)\n        cv2.imwrite(\"output.jpg\", visualized_image)\n        for (bbox, text, prob) in text_results:\n            print(f\"Text: {text}, Probability: {prob}\")",
+        "detail": "image_text_recognition.image_text_recognition",
+        "documentation": {}
+    }
+]

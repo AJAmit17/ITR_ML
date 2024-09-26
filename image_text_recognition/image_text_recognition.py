@@ -6,7 +6,6 @@ from PIL import Image, ImageEnhance, ImageFilter
 import cv2
 import re
 
-# Configure logging to log to a file
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
