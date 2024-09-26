@@ -1,0 +1,10 @@
+easyocr
+logging
+numpy
+pandas
+matplotlib
+scikit-learn
+Pillow
+opencv-python
+wheel
+albumentations
