@@ -36,7 +36,7 @@ itr_ml/
 To clone the project repository, run:
 
 ```bash
-git clone https://github.com/your-username/ocr-text-recognition.git
+git clone https://github.com/AJAmit17/ITR_ML.git
 cd itr_ml
 ```
 
