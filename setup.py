@@ -1,25 +1,26 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='image_text_recognition',
-    version='0.1',
+    name="image-text-recognition",
+    version="0.1.0",
     packages=find_packages(),
     install_requires=[
-        'easyocr',
-        'Pillow',
-        'numpy',
-        'opencv-python'
+        "easyocr",
+        "numpy",
+        "Pillow",
+        "opencv-python",
+        "scikit-learn",
     ],
-    entry_points={
-        'console_scripts': [
-            'image_text_recognition=image_text_recognition.image_text_recognition:main',
-            'fine_tune=image_text_recognition.fine_tune:main'
-        ],
-    },
-    author='',
-    author_email='',
-    description='A package for recognizing text in images using EasyOCR',
-    license='MIT',
-    keywords='image text recognition easyocr',
-    url='',
+    author="Amit Acharya",
+    author_email="amitjagadeesh2004@gmail.com",
+    description="A package for recognizing and evaluating text in images",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+    url="",
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    python_requires=">=3.6",
 )

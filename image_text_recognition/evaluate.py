@@ -1,10 +1,9 @@
-import os
-from image_text_recognition import ImageTextRecognizer
+from .image_text_recognition import ImageTextRecognizer
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-from difflib import SequenceMatcher 
+from difflib import SequenceMatcher
+import os
 
 def calculate_edit_distance(predicted, actual):
-    # Levenshtein distance or ratio can be calculated using SequenceMatcher
     return SequenceMatcher(None, predicted, actual).ratio()
 
 def evaluate_model(test_dir, ground_truth):
@@ -37,17 +36,11 @@ def evaluate_model(test_dir, ground_truth):
     recall = recall_score(list(all_true_chars), list(all_predicted_chars), average='weighted', zero_division=0)
     f1 = f1_score(list(all_true_chars), list(all_predicted_chars), average='weighted', zero_division=0)
 
-    print(f"Accuracy: {accuracy:.2f}")
-    print(f"Precision: {precision:.2f}")
-    print(f"Recall: {recall:.2f}")
-    print(f"F1-score: {f1:.2f}")
-    print(f"Average Edit Distance (similarity): {avg_edit_distance:.2f}")
-
-if __name__ == "__main__":
-    test_dir = "test_images"
-    ground_truth = {
-        "test1.jpg": "Python Code",
-        "test2.jpg": "Virtual Reality",
-        "test3.jpg": "Hello World"
+    return {
+        "Accuracy": accuracy,
+        "Precision": precision,
+        "Recall": recall,
+        "F1-score": f1,
+        "Average Edit Distance (similarity)": avg_edit_distance
     }
-    evaluate_model(test_dir, ground_truth)
+    

@@ -6,12 +6,7 @@ from PIL import Image, ImageEnhance, ImageFilter
 import cv2
 import re
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    filename='image_text_recognition.log', 
-    filemode='a'  
-)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class ImageTextRecognizer:
     def __init__(self, lang='en'):
@@ -38,7 +33,6 @@ class ImageTextRecognizer:
                 return np.array(img)
         except Exception as e:
             logging.error(f"Error preprocessing image: {str(e)}")
-            
             img = cv2.imread(image_path)
             if img is None:
                 raise ValueError(f"Unable to open image: {image_path}")
@@ -50,22 +44,12 @@ class ImageTextRecognizer:
         result = self.reader.readtext(image)
         return result
 
-    def visualize_detection(self, image, detections):
-        output = image.copy()
-        for detection in detections:
-            bbox, text, _ = detection
-            top_left = tuple(map(int, bbox[0]))
-            bottom_right = tuple(map(int, bbox[2]))
-            cv2.rectangle(output, top_left, bottom_right, (0, 255, 0), 2)
-            cv2.putText(output, text, top_left, cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
-        return output
-
     def extract_alphanumeric(self, detections):
-        logging.info("Extracting alphanumeric text")
+        logging.info("Extracting alphanumeric and special characters text")
         alphanumeric_results = []
         for detection in detections:
             bbox, text, prob = detection
-            alphanumeric_text = re.sub(r'[^a-zA-Z0-9]', '', text)
+            alphanumeric_text = re.sub(r'[^\w\s.,!?@#$%^&*()_+-=]', '', text)
             if alphanumeric_text:
                 alphanumeric_results.append((bbox, alphanumeric_text, prob))
         return alphanumeric_results
@@ -86,11 +70,8 @@ class ImageTextRecognizer:
 
         try:
             preprocessed_image = self.preprocess_image(image_path)
-
             detections = self.detect_text(preprocessed_image)
-
             alphanumeric_results = self.extract_alphanumeric(detections)
-
             final_results = self.post_process(alphanumeric_results)
             
             logging.info(f"Recognized text: {final_results}")
@@ -98,21 +79,3 @@ class ImageTextRecognizer:
         except Exception as e:
             logging.error(f"Error recognizing text: {str(e)}")
             return []
-
-def main():
-    recognizer = ImageTextRecognizer()
-    image_path = "test/1.jpg"
-    text_results = recognizer.recognize_text(image_path)
-    
-    if text_results:
-        image = cv2.imread(image_path)
-        visualized_image = recognizer.visualize_detection(image, text_results)
-        cv2.imwrite("output.jpg", visualized_image)
-        
-        for (bbox, text, prob) in text_results:
-            print(f"Text: {text}, Probability: {prob}")
-    else:
-        print("No text was recognized in the image.")
-
-if __name__ == "__main__":
-    main()
